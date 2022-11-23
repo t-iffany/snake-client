@@ -20,25 +20,28 @@ const setupInput = function (conn) {
 // what happens when a particular key is pressed on the keyboard input
 const handleUserInput = function (key) {
   // your code here
-//  stdin.on("data", (key) => {
+  stdin.on("data", (key) => {
     // \u0003 maps to ctrl+c input   Add within the data callback
     if (key === '\u0003') {
       process.exit();
     };
-    if(key === 'w') {
+    if (key === 'w') {
       connection.write("Move: up");
     };
-    if(key === 'a') {
+    if (key === 'a') {
       connection.write("Move: left");
     };
-    if(key === 's') {
+    if (key === 's') {
       connection.write("Move: down");
     };
-    if(key === 'd') {
+    if (key === 'd') {
       connection.write("Move: right");
     };
-  };
-
+    if (key === 'p') {
+      connection.write("Say: pizza please");
+    };
+});
+}
 
 
 
