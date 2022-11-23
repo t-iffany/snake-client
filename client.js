@@ -28,4 +28,4 @@ const connect = function () {
 
 
 // Export connect function
-module.exports = {connect}
+module.exports = { connect }
