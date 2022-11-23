@@ -5,44 +5,45 @@ let connection;
 
 const { stdin } = require("process");
 // setup interface to handle user input from stdin
-const setupInput = function (conn) {
+const setupInput = function(conn) {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
   stdin.setEncoding("utf8");
   // register an event listener for stdin, which uses fcn handleUserInput that runs when you receive input from your keyboard
   stdin.on("data", handleUserInput);
-  stdin.resume();  
+  stdin.resume();
   return stdin;
 };
 
 // in handleUserInput fcn, specify what happens when "data:" is received from stdin
 // what happens when a particular key is pressed on the keyboard input
-const handleUserInput = function (key) {
-  // your code here
-  stdin.on("data", (key) => {
-    // \u0003 maps to ctrl+c input   Add within the data callback
-    if (key === '\u0003') {
-      process.exit();
-    };
-    if (key === 'w') {
-      connection.write("Move: up");
-    };
-    if (key === 'a') {
-      connection.write("Move: left");
-    };
-    if (key === 's') {
-      connection.write("Move: down");
-    };
-    if (key === 'd') {
-      connection.write("Move: right");
-    };
-    if (key === 'p') {
-      connection.write("Say: pizza please");
-    };
-});
-}
-
+const handleUserInput = function(key) {
+  if (key === '\u0003') {        // \u0003 maps to ctrl+c input   Add within the data callback
+    process.exit();
+  };
+  if (key === 'w') {
+    connection.write("Move: up");
+  };
+  if (key === 'a') {
+    connection.write("Move: left");
+  };
+  if (key === 's') {
+    connection.write("Move: down");
+  };
+  if (key === 'd') {
+    connection.write("Move: right");
+  };
+  if (key === 'p') {
+    connection.write("Say: pizza");
+  };
+  if (key === 'h') {
+    connection.write("Say: hi hello there");
+  };
+  if (key === 'b') {
+    connection.write("Say: bye now");
+  };
+};
 
 
 // Export setupInput function
