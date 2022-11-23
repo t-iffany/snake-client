@@ -8,14 +8,14 @@ const connect = function () {
   });
 
   conn.on("connect", () => {
-    conn.write("Name: TIF");
     console.log("Successfully connected to game server");
+    conn.write("Name: TIF");    
+  //  conn.write("Move: up");
   });
   
   conn.on("data", (data) => {
     console.log("Server says: ", data);
   });
-
 
 
   // interpret incoming data as text
